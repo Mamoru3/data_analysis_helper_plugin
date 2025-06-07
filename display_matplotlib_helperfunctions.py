@@ -1,4 +1,5 @@
 # Copyright, Alessandro Loddo, matplotlib helper functions to plot
+import matplotlib.pyplot as plt
 # Plots a histogram for a given data array or Series, with customizable appearance and optional subplot axis.
 def plot_histogram(data, bins=20, title='Histogram', x_label='Value', y_label='Count', size=(8,5), color='skyblue', ax=None):
     if ax is None:
@@ -50,6 +51,17 @@ def plot_scatter(x, y, title='Scatter Plot', x_label='X', y_label='Y', size=(7,5
     if ax is None:
         fig, ax = plt.subplots(figsize=size)
     ax.scatter(x, y, color=color, alpha=0.6)
+    ax.set_title(title)
+    ax.set_xlabel(x_label)
+    ax.set_ylabel(y_label)
+    if ax is None: plt.tight_layout(); plt.show()
+
+def plot_line(data, title='Line Plot', x_label='Value', y_label='Count', size=(7,5), color='skyblue', is_sorted = True, ax=None):
+    if ax is None:
+        fig, ax = plt.subplots(figsize=size)
+    if is_sorted is True:
+        data = data.value_counts().sort_index()
+    data.plot(ax=ax)
     ax.set_title(title)
     ax.set_xlabel(x_label)
     ax.set_ylabel(y_label)
