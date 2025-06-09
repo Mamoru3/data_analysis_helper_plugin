@@ -51,6 +51,34 @@ def plot_barplot(data, x, y ,title = 'None',hue = None, ax=None, size=(8,6), pal
     ax.set_title(title)
     if ax is None: plt.tight_layout(); plt.show()
 
+def plot_catplot(
+    data,
+    x,
+    y=None,
+    hue=None,
+    col=None,
+    kind='count',
+    col_wrap=3,
+    height=5,
+    aspect=1.2,
+    title=None
+):
+    g = sns.catplot(
+        data=data,
+        x=x,
+        y=y,
+        hue=hue,
+        col=col,
+        kind=kind,
+        col_wrap=col_wrap,
+        height=height,
+        aspect=aspect
+    )
+    if title:
+        g.fig.suptitle(title)
+    plt.tight_layout(); 
+    plt.show()
+
 #Credit to ChatGPT
 def plot_100pct_stacked_bar(
     df,
