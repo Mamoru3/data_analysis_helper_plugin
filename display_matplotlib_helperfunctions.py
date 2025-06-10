@@ -1,6 +1,7 @@
 # Copyright, Alessandro Loddo, matplotlib helper functions to plot
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
+import numpy as np
 
 # Plots a histogram for a given data array or Series, with customizable appearance and optional subplot axis.
 def plot_histogram(data, bins=20, title='Histogram', x_label='Value', y_label='Count', size=(8,5), color='skyblue', ax=None, show_decimal = False):
@@ -8,8 +9,6 @@ def plot_histogram(data, bins=20, title='Histogram', x_label='Value', y_label='C
         fig, ax = plt.subplots(figsize=size)
     ax.hist(data, bins=bins, color=color, edgecolor='black')
     ax.set_title(title)
-    if not show_decimal:
-        ax.yaxis.set_major_locator(MaxNLocator(integer=True))
     ax.set_xlabel(x_label)
     ax.set_ylabel(y_label)
     if ax is None: plt.tight_layout(); plt.show()
